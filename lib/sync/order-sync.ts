@@ -79,7 +79,9 @@ export async function syncOrders(website: Website, daysBack: number = 365) {
 
     await supabase
       .from('websites')
-      .update({ last_sync_at: new Date().toISOString() })
+      .update({
+        last_sync_at: new Date().toISOString()
+      })
       .eq('id', website.id);
 
     return { success: true, processed: totalProcessed };
